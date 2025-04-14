@@ -1,0 +1,46 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#121212" rx="10" ry="10"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Lexend, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">MirrorPlay System Architecture</text>
+  
+  <!-- Layers -->
+  <!-- Frontend Layer -->
+  <rect x="50" y="80" width="700" height="100" fill="#1E1E1E" rx="5" ry="5" stroke="#8884FF" stroke-width="2"/>
+  <text x="400" y="110" font-family="Lexend, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">Frontend Layer</text>
+  <text x="100" y="140" font-family="Lexend, sans-serif" font-size="14" fill="#B0B0B0" text-anchor="start">• React + WebRTC • Material UI (Dark Mode) • Lexend Font • Responsive Design</text>
+  
+  <!-- Backend Layer -->
+  <rect x="50" y="190" width="700" height="100" fill="#1E1E1E" rx="5" ry="5" stroke="#4ECDC4" stroke-width="2"/>
+  <text x="400" y="220" font-family="Lexend, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">Backend Layer</text>
+  <text x="100" y="250" font-family="Lexend, sans-serif" font-size="14" fill="#B0B0B0" text-anchor="start">• Node.js/Express • WebSocket Server • Authentication • Session Management</text>
+  
+  <!-- AI Layer -->
+  <rect x="50" y="300" width="700" height="100" fill="#1E1E1E" rx="5" ry="5" stroke="#FF6B6B" stroke-width="2"/>
+  <text x="400" y="330" font-family="Lexend, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">AI Layer</text>
+  <text x="100" y="360" font-family="Lexend, sans-serif" font-size="14" fill="#B0B0B0" text-anchor="start">• OpenAI GPT-4o Integration • Custom Prompts • Emotion Analysis • Real-time Feedback</text>
+  
+  <!-- Database Layer -->
+  <rect x="50" y="410" width="340" height="100" fill="#1E1E1E" rx="5" ry="5" stroke="#FFE66D" stroke-width="2"/>
+  <text x="220" y="440" font-family="Lexend, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">Database Layer</text>
+  <text x="100" y="470" font-family="Lexend, sans-serif" font-size="14" fill="#B0B0B0" text-anchor="start">• Supabase • User Data • Session Logs • Vector Embeddings</text>
+  
+  <!-- Analytics Layer -->
+  <rect x="410" y="410" width="340" height="100" fill="#1E1E1E" rx="5" ry="5" stroke="#1A936F" stroke-width="2"/>
+  <text x="580" y="440" font-family="Lexend, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">Analytics Layer</text>
+  <text x="460" y="470" font-family="Lexend, sans-serif" font-size="14" fill="#B0B0B0" text-anchor="start">• Metrics Tracking • Emotional Heatmaps • Progress Reports</text>
+  
+  <!-- Connection Lines -->
+  <!-- Frontend to Backend -->
+  <path d="M400 180 L400 190" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5"/>
+  <!-- Backend to AI -->
+  <path d="M400 290 L400 300" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5"/>
+  <!-- Backend to Database -->
+  <path d="M300 290 L300 410" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5"/>
+  <!-- Backend to Analytics -->
+  <path d="M500 290 L500 410" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Data Flow Label -->
+  <text x="700" y="580" font-family="Lexend, sans-serif" font-size="12" fill="#888888" text-anchor="end">MirrorPlay v1.0</text>
+</svg>
