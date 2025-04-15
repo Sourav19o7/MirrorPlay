@@ -13,8 +13,8 @@ import {
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import GroupsIcon from '@mui/icons-material/Groups';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
 
 const Landing = () => {
   const navigate = useNavigate();

@@ -1,3 +1,4 @@
+// client/src/components/dashboard/EmptyState.jsx
 import React from 'react';
 import { Box, Typography, Button, Paper } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';

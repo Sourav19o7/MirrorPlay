@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { 
   Box, 
   Container, 
@@ -20,21 +19,30 @@ import {
   Autocomplete,
   CircularProgress
 } from '@mui/material';
+
+import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
+import { useAuth } from '../context/AuthContext';
+import { useSessions } from '../context/SessionContext';
+
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'; // Use Redux instead of context
+
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import GroupsIcon from '@mui/icons-material/Groups';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { createSession } from '../redux/slices/sessionSlice'; // Import Redux actions
+import { showNotification } from '../redux/slices/uiSlice';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { useAuth } from '../context/AuthContext';
-import { useSessions } from '../context/SessionContext';
+// Rest of the SessionSetup component code...
 
 const steps = ['Select Mode', 'Configure Session', 'Review & Start'];
 
 const SessionSetup = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const { createSession, loading } = useSessions();
+  const { user } = useSelector(state => state.auth);
+const { loading } = useSelector(state => state.session);
   
   const [activeStep, setActiveStep] = useState(0);
   const [selectedMode, setSelectedMode] = useState(null);

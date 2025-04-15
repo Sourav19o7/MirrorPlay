@@ -1,3 +1,4 @@
+// client/src/components/common/Header.jsx (rename from Header.jsx)
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -156,7 +157,7 @@ const Header = () => {
               </MenuItem>
               <MenuItem onClick={() => {
                 handleCloseMenu();
-                navigate('/profile');
+                navigate('/profile-setup');
               }}>
                 <ListItemIcon>
                   <AccountCircleIcon fontSize="small" />

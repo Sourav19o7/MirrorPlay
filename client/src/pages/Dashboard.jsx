@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { 
   Box, 
   Container, 
@@ -25,16 +24,26 @@ import PeopleIcon from '@mui/icons-material/People';
 import GroupsIcon from '@mui/icons-material/Groups';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useSessions } from '../context/SessionContext';
-import SessionCard from '../components/SessionCard';
+
+import { useDispatch, useSelector } from 'react-redux'; // Use Redux instead of context
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
+import AddIcon from '@mui/icons-material/Add';
+import { getSessions, deleteSession } from '../redux/slices/sessionSlice'; // Import Redux actions
+import { showNotification } from '../redux/slices/uiSlice';
+import Header from '../components/common/Header'; // Updated import path
+import Footer from '../components/common/Footer'; // Updated import path
+import SessionCard from '../components/dashboard/SessionCard'; // Updated import path
+import EmptyState from '../components/dashboard/EmptyState';
+
+// Rest of the Dashboard component code...
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const { sessions, loading, error } = useSessions();
+  const { user } = useSelector(state => state.auth);
+  const { sessions, loading, error } = useSelector(state => state.session);
   const [tabValue, setTabValue] = useState(0);
   
   // Redirect if not logged in
