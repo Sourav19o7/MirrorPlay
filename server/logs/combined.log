@@ -12,3 +12,104 @@
 2025-04-15T15:07:09.633Z error: Error initializing services: Cannot read properties of undefined (reading 'connect')
 2025-04-15T15:07:09.634Z error: Server will continue to run, but some features may be limited
 2025-04-15T15:07:39.634Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:30:08.716Z info: Server running in development mode on port 5000
+2025-04-15T15:30:08.717Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:30:08.718Z error: Error initializing services: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:30:08.718Z error: Server will continue to run, but some features may be limited
+2025-04-15T15:30:13.721Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:30:18.725Z info: Retrying MongoDB connection...
+2025-04-15T15:30:23.730Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:30:28.732Z info: Retrying MongoDB connection...
+2025-04-15T15:30:33.737Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:30:38.740Z info: Retrying MongoDB connection...
+2025-04-15T15:30:41.034Z info: Server running in development mode on port 5000
+2025-04-15T15:30:41.035Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:30:41.526Z error: Pinecone connection error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:30:41.526Z error: Error initializing services: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:30:41.526Z error: Server will continue to run, but some features may be limited
+2025-04-15T15:30:46.038Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:30:51.040Z info: Retrying MongoDB connection...
+2025-04-15T15:30:56.045Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:04.625Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:04.627Z info: Server running in development mode on port 5000
+2025-04-15T15:31:04.628Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:31:04.628Z warn: Rocket.Chat initialization failed. Chat features will be limited.
+2025-04-15T15:31:04.953Z error: Pinecone connection error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:31:04.953Z error: Pinecone initialization error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:31:06.023Z error: OpenAI connection error: Request failed with status code 401
+2025-04-15T15:31:06.024Z warn: OpenAI connection failed. AI features will be limited.
+2025-04-15T15:31:06.024Z error: All service initializations failed. Application functionality will be severely limited.
+2025-04-15T15:31:09.628Z info: Retrying MongoDB connection...
+2025-04-15T15:31:19.500Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:19.505Z info: Server running in development mode on port 5000
+2025-04-15T15:31:19.505Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:31:19.506Z warn: Rocket.Chat initialization failed. Chat features will be limited.
+2025-04-15T15:31:19.686Z error: Pinecone connection error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:31:19.687Z warn: Pinecone initialization failed. Vector search features will be limited.
+2025-04-15T15:31:20.872Z error: OpenAI connection error: Request failed with status code 401
+2025-04-15T15:31:20.873Z warn: OpenAI connection failed. AI features will be limited.
+2025-04-15T15:31:20.873Z error: All service initializations failed. Application functionality will be severely limited.
+2025-04-15T15:31:24.504Z info: Retrying MongoDB connection...
+2025-04-15T15:31:29.512Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:36.074Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:36.079Z info: Server running in development mode on port 5000
+2025-04-15T15:31:36.080Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:31:36.081Z warn: Rocket.Chat initialization failed. Chat features will be limited.
+2025-04-15T15:31:36.278Z error: Pinecone connection error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:31:36.278Z warn: Pinecone initialization failed. Vector search features will be limited.
+2025-04-15T15:31:37.461Z error: OpenAI connection error: Request failed with status code 401
+2025-04-15T15:31:37.462Z warn: OpenAI connection failed. AI features will be limited.
+2025-04-15T15:31:37.463Z error: All service initializations failed. Application functionality will be severely limited.
+2025-04-15T15:31:41.079Z info: Retrying MongoDB connection...
+2025-04-15T15:31:46.086Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:55.289Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:31:55.295Z info: Server running in development mode on port 5000
+2025-04-15T15:31:55.296Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:31:55.296Z warn: Rocket.Chat initialization failed. Chat features will be limited.
+2025-04-15T15:31:55.696Z error: Pinecone connection error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T15:31:55.696Z warn: Pinecone initialization failed. Vector search features will be limited.
+2025-04-15T15:31:56.713Z error: OpenAI connection error: Request failed with status code 401
+2025-04-15T15:31:56.714Z warn: OpenAI connection failed. AI features will be limited.
+2025-04-15T15:31:56.715Z error: All service initializations failed. Application functionality will be severely limited.
+2025-04-15T15:32:00.295Z info: Retrying MongoDB connection...
+2025-04-15T15:32:05.304Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:32:10.305Z info: Retrying MongoDB connection...
+2025-04-15T15:32:15.314Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:32:20.315Z info: Retrying MongoDB connection...
+2025-04-15T15:32:25.320Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:32:30.322Z info: Retrying MongoDB connection...
+2025-04-15T15:32:35.328Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:32:40.331Z info: Retrying MongoDB connection...
+2025-04-15T15:32:45.336Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:32:50.338Z info: Retrying MongoDB connection...
+2025-04-15T15:32:55.340Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:33:00.341Z info: Retrying MongoDB connection...
+2025-04-15T15:33:05.345Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:33:10.347Z info: Retrying MongoDB connection...
+2025-04-15T15:33:15.354Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:33:20.356Z info: Retrying MongoDB connection...
+2025-04-15T15:33:25.358Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:33:30.361Z info: Retrying MongoDB connection...
+2025-04-15T15:33:35.365Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:33:40.366Z info: Retrying MongoDB connection...
+2025-04-15T15:33:45.369Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:33:50.371Z info: Retrying MongoDB connection...
+2025-04-15T15:33:55.374Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:34:00.375Z info: Retrying MongoDB connection...
+2025-04-15T15:34:05.378Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:34:10.379Z info: Retrying MongoDB connection...
+2025-04-15T15:34:15.384Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:34:20.386Z info: Retrying MongoDB connection...
+2025-04-15T15:34:25.390Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:34:30.391Z info: Retrying MongoDB connection...
+2025-04-15T15:34:35.394Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:34:40.396Z info: Retrying MongoDB connection...
+2025-04-15T15:34:45.401Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:34:50.402Z info: Retrying MongoDB connection...
+2025-04-15T15:34:55.405Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:35:00.407Z info: Retrying MongoDB connection...
+2025-04-15T15:35:05.410Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:35:10.412Z info: Retrying MongoDB connection...
+2025-04-15T15:35:15.417Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:35:20.418Z info: Retrying MongoDB connection...
+2025-04-15T15:35:25.424Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
