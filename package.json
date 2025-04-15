@@ -1,0 +1,24 @@
+{
+    "name": "mirrorplay",
+    "version": "1.0.0",
+    "description": "AI-enhanced conversation platform for conflict resolution",
+    "private": true,
+    "workspaces": [
+      "client",
+      "server"
+    ],
+    "scripts": {
+      "start": "concurrently \"npm run server\" \"npm run client\"",
+      "server": "npm start --workspace=server",
+      "client": "npm start --workspace=client",
+      "install:client": "npm install --workspace=client",
+      "install:server": "npm install --workspace=server",
+      "build": "npm run build --workspace=client",
+      "dev": "concurrently \"npm run dev --workspace=server\" \"npm start --workspace=client\""
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+      "concurrently": "^8.0.1"
+    }
+}

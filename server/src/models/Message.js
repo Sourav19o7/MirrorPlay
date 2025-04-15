@@ -1,89 +1,60 @@
 const mongoose = require('mongoose');
 
-const SessionSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, 'Please add a title'],
-    trim: true,
-    maxlength: [100, 'Title cannot be more than 100 characters']
-  },
-  description: {
-    type: String,
-    maxlength: [500, 'Description cannot be more than 500 characters']
-  },
-  mode: {
-    type: String,
-    enum: ['self-dialogue', 'projected-conflict', 'live-session'],
-    required: [true, 'Please specify the session mode']
-  },
-  creator: {
+// Message schema - This should represent a message, not a session
+const MessageSchema = new mongoose.Schema({
+  session: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Session',
     required: true
   },
-  participants: [{
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    },
-    email: String,
-    status: {
-      type: String,
-      enum: ['invited', 'pending', 'joined', 'declined'],
-      default: 'invited'
-    },
-    joinedAt: Date
-  }],
-  status: {
+  sender: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  isAI: {
+    type: Boolean,
+    default: false
+  },
+  content: {
     type: String,
-    enum: ['created', 'active', 'paused', 'completed', 'cancelled'],
-    default: 'created'
+    required: [true, 'Message content is required'],
+    trim: true
   },
-  chatRoomId: {
-    type: String
+  emotions: {
+    primary: {
+      type: String,
+      enum: [
+        'neutral', 'happy', 'sad', 'angry', 'frustrated',
+        'anxious', 'defensive', 'hopeful', 'confused', 'empathetic'
+      ],
+      default: 'neutral'
+    },
+    secondary: [String],
+    intensity: {
+      type: Number,
+      min: 1,
+      max: 10,
+      default: 5
+    }
   },
-  topics: [String],
-  duration: {
-    type: Number,  // Duration in minutes
-    default: 30
+  analysis: {
+    isBidForConnection: Boolean,
+    containsBlameLanguage: Boolean,
+    communicationPatterns: [String],
+    vectorId: String  // Reference to vector embedding in Pinecone
   },
-  otherPersonDetails: {
-    // For projected-conflict mode
-    relationship: String,
-    characteristics: [String]
-  },
-  shadowDetails: {
-    // For self-dialogue mode
-    personality: [String],
-    context: String
-  },
-  insights: {
-    clarityScore: Number,
-    connectionMoments: [
-      {
-        timestamp: Date,
-        description: String
-      }
-    ],
-    patterns: [String],
-    growthOpportunities: [String]
-  },
-  startedAt: Date,
-  endedAt: Date,
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
+  suggestions: [{
+    type: {
+      type: String,
+      enum: ['reframe', 'reflection', 'question', 'validation', 'clarification']
+    },
+    content: String,
+    originalText: String  // Original text if type is 'reframe'
+  }],
+  timestamp: {
     type: Date,
     default: Date.now
   }
 });
 
-// Update the updatedAt field on save
-SessionSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  next();
-});
-
-module.exports = mongoose.model('Session', SessionSchema);
+module.exports = mongoose.model('Message', MessageSchema);

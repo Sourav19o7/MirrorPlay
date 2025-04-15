@@ -1,0 +1,14 @@
+2025-04-15T15:06:27.492Z info: Server running in development mode on port 5000
+2025-04-15T15:06:27.493Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:06:27.493Z error: Error initializing services: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:06:27.493Z error: Server will continue to run, but some features may be limited
+2025-04-15T15:06:35.675Z info: Server running in development mode on port 5000
+2025-04-15T15:06:35.676Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:06:35.676Z error: Error initializing services: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:06:35.676Z error: Server will continue to run, but some features may be limited
+2025-04-15T15:07:05.678Z error: Error connecting to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-15T15:07:09.632Z info: Server running in development mode on port 5000
+2025-04-15T15:07:09.633Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:07:09.633Z error: Error initializing services: Cannot read properties of undefined (reading 'connect')
+2025-04-15T15:07:09.634Z error: Server will continue to run, but some features may be limited
+2025-04-15T15:07:39.634Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
