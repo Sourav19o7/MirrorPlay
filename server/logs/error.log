@@ -65,3 +65,8 @@
 2025-04-15T15:35:05.410Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
 2025-04-15T15:35:15.417Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
 2025-04-15T15:35:25.424Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:35:35.430Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:35:45.435Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:35:55.438Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:36:05.445Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T15:36:15.451Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
