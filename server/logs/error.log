@@ -70,3 +70,24 @@
 2025-04-15T15:35:55.438Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
 2025-04-15T15:36:05.445Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
 2025-04-15T15:36:15.451Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:24:07.550Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:24:07.556Z error: Rocket.Chat connection error: Cannot read properties of undefined (reading 'connect')
+2025-04-15T18:24:08.004Z error: Pinecone connection error: Failed getting project name. Error: Unauthorized - Invalid API Key
+2025-04-15T18:24:09.024Z error: OpenAI connection error: Request failed with status code 401
+2025-04-15T18:24:09.025Z error: All service initializations failed. Application functionality will be severely limited.
+2025-04-15T18:24:17.563Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:24:27.569Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:24:37.574Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:24:47.583Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:24:57.588Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:25:07.595Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:25:17.602Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:25:27.612Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:25:37.619Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:25:47.625Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:25:57.633Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:26:07.638Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:26:17.645Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:26:27.651Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:26:37.655Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
+2025-04-15T18:26:47.661Z error: Error connecting to MongoDB: connect ECONNREFUSED 127.0.0.1:27017, connect ECONNREFUSED ::1:27017
