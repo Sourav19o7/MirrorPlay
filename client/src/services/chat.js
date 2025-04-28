@@ -1,25 +1,21 @@
 import api from './api';
-import { RocketChat } from '@rocket.chat/sdk';
-
-// Initialize Rocket.Chat client
-const rocketChat = new RocketChat({
-  host: process.env.REACT_APP_ROCKET_CHAT_URL,
-  useSsl: true
-});
+import { v4 as uuidv4 } from 'uuid'; // You'll need to install this package
 
 const chatService = {
-  // Send message
+  // Send message to the API
   sendMessage: async (sessionId, content) => {
     return api.post(`/sessions/${sessionId}/messages`, { content });
   },
   
-  // Initialize Rocket.Chat connection
-  initRocketChat: async (username, password) => {
+  // Initialize chat connection (replaces Rocket.Chat initialization)
+  initChat: async (username) => {
     try {
-      await rocketChat.login({ username, password });
+      // We can use local storage to store chat session info
+      localStorage.setItem('chat_username', username);
+      localStorage.setItem('chat_session_id', uuidv4());
       return true;
     } catch (error) {
-      console.error('Rocket.Chat initialization error:', error);
+      console.error('Chat initialization error:', error);
       return false;
     }
   },
@@ -27,7 +23,10 @@ const chatService = {
   // Join a chat room
   joinRoom: async (roomId) => {
     try {
-      await rocketChat.joinRoom(roomId);
+      // Store the current active room in local storage
+      localStorage.setItem('chat_current_room', roomId);
+      // Notify backend about joining the room
+      await api.post(`/chat/join`, { roomId });
       return true;
     } catch (error) {
       console.error('Error joining room:', error);
@@ -35,16 +34,58 @@ const chatService = {
     }
   },
   
-  // Subscribe to room messages
+  // Subscribe to room messages using polling or WebSocket
   subscribeToRoom: async (roomId, callback) => {
     try {
-      const subscription = await rocketChat.subscribeToMessages(roomId);
+      // Create a subscription ID to identify this subscription
+      const subscriptionId = uuidv4();
       
-      subscription.onMessage((message) => {
-        callback(message);
-      });
+      // Use WebSocket if available, or fall back to polling
+      if (window.WebSocket) {
+        // Implementation would depend on your backend WebSocket setup
+        console.log('WebSocket would be initialized here');
+        
+        // Example WebSocket setup (uncomment and customize when you have a WebSocket server)
+        /*
+        const socket = new WebSocket(`${process.env.REACT_APP_WS_URL}/chat/${roomId}`);
+        
+        socket.onmessage = (event) => {
+          const message = JSON.parse(event.data);
+          callback(message);
+        };
+        
+        // Store the socket reference for later cleanup
+        window.chatSubscriptions = window.chatSubscriptions || {};
+        window.chatSubscriptions[subscriptionId] = socket;
+        */
+      } else {
+        // Polling fallback
+        console.log('Falling back to polling for messages');
+        const pollInterval = setInterval(async () => {
+          try {
+            const response = await api.get(`/chat/messages/${roomId}`);
+            if (response.data && response.data.messages) {
+              response.data.messages.forEach(message => {
+                callback(message);
+              });
+            }
+          } catch (err) {
+            console.error('Polling error:', err);
+          }
+        }, 3000); // Poll every 3 seconds
+        
+        // Store the interval for later cleanup
+        window.chatSubscriptions = window.chatSubscriptions || {};
+        window.chatSubscriptions[subscriptionId] = { 
+          type: 'polling',
+          interval: pollInterval 
+        };
+      }
       
-      return subscription;
+      return {
+        id: subscriptionId,
+        unsubscribe: () => chatService.unsubscribeFromRoom({ id: subscriptionId })
+      };
     } catch (error) {
       console.error('Error subscribing to room:', error);
       return null;
@@ -53,29 +94,63 @@ const chatService = {
   
   // Unsubscribe from room
   unsubscribeFromRoom: async (subscription) => {
-    if (subscription) {
-      subscription.unsubscribe();
+    if (!subscription || !subscription.id) return;
+    
+    const subscriptions = window.chatSubscriptions || {};
+    const sub = subscriptions[subscription.id];
+    
+    if (sub) {
+      if (sub.type === 'polling' && sub.interval) {
+        clearInterval(sub.interval);
+      } else if (sub.close) {
+        // It's a WebSocket
+        sub.close();
+      }
+      
+      delete subscriptions[subscription.id];
     }
   },
   
-  // Send message to Rocket.Chat room
-  sendRocketChatMessage: async (roomId, text) => {
+  // Send message to chat room
+  sendChatMessage: async (roomId, text) => {
     try {
-      const messageId = await rocketChat.sendMessage(text, roomId);
-      return messageId;
+      const response = await api.post(`/chat/messages`, {
+        roomId,
+        content: text,
+        timestamp: new Date().toISOString()
+      });
+      
+      return response.data.messageId;
     } catch (error) {
-      console.error('Error sending message to Rocket.Chat:', error);
+      console.error('Error sending message to chat:', error);
       throw error;
     }
   },
   
-  // Logout from Rocket.Chat
-  logoutRocketChat: async () => {
+  // Logout from chat
+  logoutChat: async () => {
     try {
-      await rocketChat.logout();
+      // Clear chat-related local storage
+      localStorage.removeItem('chat_username');
+      localStorage.removeItem('chat_session_id');
+      localStorage.removeItem('chat_current_room');
+      
+      // Clean up any active subscriptions
+      const subscriptions = window.chatSubscriptions || {};
+      Object.keys(subscriptions).forEach(id => {
+        const sub = subscriptions[id];
+        if (sub.type === 'polling' && sub.interval) {
+          clearInterval(sub.interval);
+        } else if (sub.close) {
+          sub.close();
+        }
+      });
+      
+      window.chatSubscriptions = {};
+      
       return true;
     } catch (error) {
-      console.error('Rocket.Chat logout error:', error);
+      console.error('Chat logout error:', error);
       return false;
     }
   }
