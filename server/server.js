@@ -1,12 +1,102 @@
 const app = require('./src/app');
 const http = require('http');
 const connectDB = require('./src/config/db');
-const { initRocketChat, isConnected } = require('./src/config/rocket-chat');
 const { initPinecone } = require('./src/config/pinecone');
 const { testOpenAIConnection } = require('./src/config/openai');
 const logger = require('./src/utils/logger');
+const WebSocket = require('ws'); // You'll need to install this package
 
 const server = http.createServer(app);
+
+// WebSocket server for real-time chat
+const wss = new WebSocket.Server({ server });
+
+// Store active connections
+const clients = new Map();
+
+wss.on('connection', (ws, req) => {
+  const userId = req.url.split('/').pop(); // Extract user ID from URL
+  
+  // Store the connection
+  clients.set(userId, ws);
+  
+  logger.info(`WebSocket connection established for user: ${userId}`);
+  
+  // Handle incoming messages
+  ws.on('message', (message) => {
+    try {
+      const parsedMessage = JSON.parse(message);
+      
+      // Handle different message types
+      switch (parsedMessage.type) {
+        case 'chat':
+          handleChatMessage(parsedMessage, userId);
+          break;
+        case 'typing':
+          broadcastTypingStatus(parsedMessage.roomId, userId, parsedMessage.isTyping);
+          break;
+        default:
+          logger.warn(`Unknown message type: ${parsedMessage.type}`);
+      }
+    } catch (error) {
+      logger.error(`WebSocket message error: ${error.message}`);
+    }
+  });
+  
+  // Handle connection close
+  ws.on('close', () => {
+    clients.delete(userId);
+    logger.info(`WebSocket connection closed for user: ${userId}`);
+  });
+  
+  // Send a welcome message
+  ws.send(JSON.stringify({
+    type: 'system',
+    message: 'Connected to MirrorPlay WebSocket server'
+  }));
+});
+
+// Handle chat messages
+const handleChatMessage = async (message, senderId) => {
+  try {
+    // Store message in database (implementation depends on your service)
+    // const savedMessage = await chatService.sendMessage(message.roomId, message.content, senderId);
+    
+    // Get room members
+    // const room = await ChatRoom.findById(message.roomId).select('members');
+    const room = { members: [] }; // Placeholder until you implement the above line
+    
+    // Broadcast to all members of the room
+    if (room && room.members) {
+      room.members.forEach(member => {
+        const memberWs = clients.get(member.toString());
+        
+        if (memberWs && memberWs.readyState === WebSocket.OPEN) {
+          memberWs.send(JSON.stringify({
+            type: 'chat',
+            roomId: message.roomId,
+            senderId,
+            content: message.content,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      });
+    }
+  } catch (error) {
+    logger.error(`Error handling chat message: ${error.message}`);
+  }
+};
+
+// Broadcast typing status
+const broadcastTypingStatus = (roomId, userId, isTyping) => {
+  try {
+    // Implementation would be similar to handleChatMessage
+    // Get room members and broadcast to all except the sender
+    logger.info(`User ${userId} is ${isTyping ? 'typing' : 'stopped typing'} in room ${roomId}`);
+  } catch (error) {
+    logger.error(`Error broadcasting typing status: ${error.message}`);
+  }
+};
 
 // Connect to MongoDB with retry mechanism
 const setupDatabase = async () => {
@@ -22,23 +112,10 @@ const setupDatabase = async () => {
 // Initialize services with fault tolerance
 const initServices = async () => {
   const serviceStatus = {
-    rocketChat: false,
     pinecone: false,
     openAI: false
   };
 
-  try {
-    // Initialize Rocket.Chat connection
-    const rocketChatDriver = await initRocketChat();
-    serviceStatus.rocketChat = !!rocketChatDriver;
-    
-    if (!serviceStatus.rocketChat) {
-      logger.warn('Rocket.Chat initialization failed. Chat features will be limited.');
-    }
-  } catch (error) {
-    logger.error(`Rocket.Chat initialization error: ${error.message}`);
-  }
-  
   try {
     // Initialize Pinecone
     const pineconeClient = await initPinecone();
@@ -101,6 +178,18 @@ process.on('uncaughtException', (err) => {
 // Graceful shutdown
 const gracefulShutdown = () => {
   logger.info('Received shutdown signal. Closing server gracefully...');
+  
+  // Close all WebSocket connections
+  wss.clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify({
+        type: 'system',
+        message: 'Server shutting down'
+      }));
+      client.close();
+    }
+  });
+  
   server.close(() => {
     logger.info('Server closed successfully');
     process.exit(0);
@@ -132,11 +221,11 @@ const startServer = async () => {
   // Start HTTP server
   server.listen(PORT, () => {
     logger.info(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    logger.info(`WebSocket server enabled for real-time chat`);
     
     // Initialize other services after server is running
     initServices().then(serviceStatus => {
-      // Add additional checks or notifications here if needed
-      // For example, you could send an admin notification if critical services are down
+      // Additional checks or notifications if needed
     });
   });
 };

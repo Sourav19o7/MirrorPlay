@@ -19,6 +19,7 @@ dotenv.config();
 const authRoutes = require('./routes/auth');
 const sessionRoutes = require('./routes/session');
 const aiRoutes = require('./routes/ai');
+const chatRoutes = require('./routes/chat'); // Add the new chat routes
 
 // Initialize app
 const app = express();
@@ -57,6 +58,7 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/chat', chatRoutes); // Mount the new chat routes
 
 // Error handler
 app.use(errorHandler);
