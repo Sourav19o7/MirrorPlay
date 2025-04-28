@@ -1,3 +1,5 @@
+// server/src/app.js - Modified to include the new API routes
+
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
@@ -19,7 +21,8 @@ dotenv.config();
 const authRoutes = require('./routes/auth');
 const sessionRoutes = require('./routes/session');
 const aiRoutes = require('./routes/ai');
-const chatRoutes = require('./routes/chat'); // Add the new chat routes
+const chatRoutes = require('./routes/chat');
+const apiRoutes = require('./routes/api'); // Add the new API routes
 
 // Initialize app
 const app = express();
@@ -58,7 +61,8 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/ai', aiRoutes);
-app.use('/api/chat', chatRoutes); // Mount the new chat routes
+app.use('/api/chat', chatRoutes);
+app.use('/api/v1', apiRoutes); // Mount the new API routes under /api/v1
 
 // Error handler
 app.use(errorHandler);
